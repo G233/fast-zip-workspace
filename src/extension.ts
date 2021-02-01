@@ -1,27 +1,40 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from 'vscode'
+import { exec } from 'child_process'
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+const activate = (context: vscode.ExtensionContext) => {
+  console.log('开始启动插件....')
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "zip-work-space" is now active!');
+  let disposable = vscode.commands.registerCommand(
+    'zip-work-space.deleteNodeModulesCommand',
+    () => {
+      const options = {
+        prompt: '请输入压缩后的文件名: ',
+        placeHolder: '默认为选中文件名',
+      }
+      vscode.window.showInputBox(options).then((zipName) => {
+        vscode.workspace.workspaceFolders?.forEach((folder) => {
+          // 与 path 的区别
+          vscode.window.showInformationMessage('开始压缩')
+          exec(
+            // 记得使用完整路径
+            `zip -q -r  ${folder.uri.fsPath}/${zipName || folder.name}.zip  ${
+              folder.uri.fsPath
+            }  `,
+            (err: any) => {
+              if (err) {
+                console.error(err)
+              }
+            }
+          )
+          vscode.window.showInformationMessage('压缩成功')
+        })
+      })
+    }
+  )
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('zip-work-space.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from zip_work_space!');
-	});
-
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable)
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+const deactivate = () => {}
+
+export { activate, deactivate }
