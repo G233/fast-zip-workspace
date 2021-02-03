@@ -1,37 +1,42 @@
 import * as vscode from 'vscode'
+import * as util from 'util'
 import { exec } from 'child_process'
+const PromiseExec = util.promisify(exec)
+
+const getRename = async () => {
+  const options = {
+    prompt: '请输入压缩后的文件名: ',
+    placeHolder: '默认为选中文件名',
+  }
+  const rename = await vscode.window.showInputBox(options)
+  return rename
+}
+
+// 添加密码功能
+
+const zipWorkSpace = async (rename: string | undefined) => {
+  vscode.workspace.workspaceFolders?.forEach(async (folder) => {
+    // 与 path 的区别
+    vscode.window.showInformationMessage('开始压缩')
+    await PromiseExec(
+      `zip -q -r ${
+        rename || folder.name
+      }.zip .  --exclude "*node_modules*" "./node_modules"`,
+      { cwd: folder.uri.fsPath }
+    ).catch((err) => {
+      vscode.window.showErrorMessage(err)
+    })
+  })
+}
 
 const activate = (context: vscode.ExtensionContext) => {
-  console.log('开始启动插件....')
-
-  let disposable = vscode.commands.registerCommand(
+  const disposable = vscode.commands.registerCommand(
     'zip-work-space.deleteNodeModulesCommand',
-    () => {
-      const options = {
-        prompt: '请输入压缩后的文件名: ',
-        placeHolder: '默认为选中文件名',
-      }
-      vscode.window.showInputBox(options).then((zipName) => {
-        vscode.workspace.workspaceFolders?.forEach((folder) => {
-          // 与 path 的区别
-          vscode.window.showInformationMessage('开始压缩')
-          exec(
-            // 记得使用完整路径
-            `zip -q -r  ${folder.uri.fsPath}/${zipName || folder.name}.zip  ${
-              folder.uri.fsPath
-            }  `,
-            (err: any) => {
-              if (err) {
-                console.error(err)
-              }
-            }
-          )
-          vscode.window.showInformationMessage('压缩成功')
-        })
-      })
+    async () => {
+      const rename = await getRename()
+      zipWorkSpace(rename)
     }
   )
-
   context.subscriptions.push(disposable)
 }
 

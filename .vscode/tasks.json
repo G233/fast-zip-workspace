@@ -19,23 +19,23 @@
 				"isDefault": true
 			}
 		},
-		{
-			"type": "npm",
-			"script": "test-watch",
-			"problemMatcher": "$tsc-watch",
-			"isBackground": true,
-			"presentation": {
-				"reveal": "never"
+			{
+				"type": "npm",
+				"script": "test-watch",
+				"problemMatcher": "$tsc-watch",
+				"isBackground": true,
+				"presentation": {
+					"reveal": "never"
+				},
+				"group": "build"
 			},
-			"group": "build"
-		},
-		{
-			"type": "npm",
-			"script": "compile",
-			"group": "build",
-			"problemMatcher": [],
-			"label": "npm: compile",
-			"detail": "webpack --config ./build/node-extension.webpack.config.js"
-		}
+			{
+				"type": "npm",
+				"script": "compile",
+				"group": "build",
+				"problemMatcher": [],
+				"label": "npm: compile",
+				"detail": "webpack --config ./build/node-extension.webpack.config.js"
+			}
 	]
 }

@@ -1,14 +1,35 @@
 {
 	"name": "zip-work-space",
-	"displayName": "zip_work_space",
-	"description": "",
-	"version": "0.0.1",
+	"displayName": "zipWorkSpace",
+	"description": "Simple extension for Visual Studio Code that allows you to quickly zip  your project's  directory with  gitignore",
+	"author": {
+		"name": "Atom Liu",
+		"email": "atomg1024@gmail.com",
+		"url": "https://github.com/G233"
+	},
+	"version": "1.0.6",
+	"publisher": "Wscats",
+	"icon": "logo/index.png",
+	"homepage": "https://github.com/G233/zip-work-space",
+	"preview": true,
 	"engines": {
 		"vscode": "^1.52.0"
 	},
 	"categories": [
+		"Extension Packs",
+		"Debuggers",
 		"Other"
 	],
+	"keywords": [
+		"node_modules",
+		"package.json",
+		"zip",
+		"gitignore"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/G233/zip-work-space/issues/new"
+	},
 	"activationEvents": [
 		"onCommand:zip-work-space.deleteNodeModulesCommand"
 	],
