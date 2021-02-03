@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 import * as util from 'util'
 import { exec } from 'child_process'
-const PromiseExec = util.promisify(exec)
+const promiseExec = util.promisify(exec)
 
 const getRename = async () => {
   const options = {
@@ -16,12 +16,11 @@ const getRename = async () => {
 
 const zipWorkSpace = async (rename: string | undefined) => {
   vscode.workspace.workspaceFolders?.forEach(async (folder) => {
-    // 与 path 的区别
     vscode.window.showInformationMessage('开始压缩')
-    await PromiseExec(
+    await promiseExec(
       `zip -q -r ${
         rename || folder.name
-      }.zip .  --exclude "*node_modules*" "./node_modules"`,
+      }.zip .  --exclude "*node_modules*" "**/node_modules"`,
       { cwd: folder.uri.fsPath }
     ).catch((err) => {
       vscode.window.showErrorMessage(err)
