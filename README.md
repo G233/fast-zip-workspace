@@ -1,67 +1,19 @@
-<!-- # zip-work-space README
+# FastZip README
 
-This is the README for your extension "zip-work-space". After writing up a brief description, we recommend including the following sections.
+Simple extension for Visual Studio Code that allows you to quickly zip your project's directory without .gitignore files
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- zip your project's directory without .gitignore files
 
-For example if there is an image subfolder under your extension project workspace:
+![123](https://vscode-1257163508.cos.ap-nanjing.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B62021-02-04%2010.59.22.gif)
 
-\!\[feature X\]\(images/feature-x.png\)
+> Tip: We use "git archive" to compress files in the workspace, so make sure the files you need have been added to the storage
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
+# ChangeLog
 
 ### 1.0.0
 
-Initial release of ...
+- First version
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-　
-**Enjoy!** -->
-
-test
+Enjoy!

@@ -9,7 +9,7 @@
 	},
 	"version": "1.0.0",
 	"publisher": "atonliu",
-	"icon": "logo/index.png",
+	"icon": "https://vscode-1257163508.cos.ap-nanjing.myqcloud.com/index.png",
 	"homepage": "https://github.com/G233/fast-zip-workspace",
 	"preview": true,
 	"engines": {
