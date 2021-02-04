@@ -37,7 +37,7 @@ const zipWorkSpace = async (rename: string | undefined) => {
 
 const activate = (context: vscode.ExtensionContext) => {
   const disposable = vscode.commands.registerCommand(
-    'zip-work-space.deleteNodeModulesCommand',
+    'zip-work-space.zipWorkSpace',
     async () => {
       console.log('插件启动！')
       const rename = await getRename()

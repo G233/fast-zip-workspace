@@ -1,50 +1,48 @@
 {
-	"name": "zip-work-space",
-	"displayName": "zipWorkSpace",
-	"description": "Simple extension for Visual Studio Code that allows you to quickly zip  your project's  directory with  gitignore",
+	"name": "fast-zip",
+	"displayName": "fastZip",
+	"description": "Simple extension for Visual Studio Code that allows you to quickly zip  your project's  directory without .gitignore files ",
 	"author": {
 		"name": "Atom Liu",
 		"email": "atomg1024@gmail.com",
 		"url": "https://github.com/G233"
 	},
-	"version": "1.0.6",
-	"publisher": "Wscats",
+	"version": "1.0.0",
+	"publisher": "atonliu",
 	"icon": "logo/index.png",
-	"homepage": "https://github.com/G233/zip-work-space",
+	"homepage": "https://github.com/G233/fast-zip-workspace",
 	"preview": true,
 	"engines": {
 		"vscode": "^1.52.0"
 	},
 	"categories": [
 		"Extension Packs",
-		"Debuggers",
 		"Other"
 	],
 	"keywords": [
-		"node_modules",
-		"package.json",
 		"zip",
-		"gitignore"
+		"gitignore",
+		"git"
 	],
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/G233/zip-work-space/issues/new"
+		"url": "https://github.com/G233/fast-zip-workspace/issues/new"
 	},
 	"activationEvents": [
-		"onCommand:zip-work-space.deleteNodeModulesCommand"
+		"onCommand:zip-work-space.zipWorkSpace"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "zip-work-space.deleteNodeModulesCommand",
+				"command": "zip-work-space.zipWorkSpace",
 				"title": "压缩文件"
 			}
 		],
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "zip-work-space.deleteNodeModulesCommand",
+					"command": "zip-work-space.zipWorkSpace",
 					"group": "5_cutcopypaste"
 				}
 			]
