@@ -1,16 +1,17 @@
 {
 	"name": "fast-zip",
 	"displayName": "fastZip",
-	"description": "Simple extension for Visual Studio Code that allows you to quickly zip  your project's  directory without .gitignore files ",
+	"description": "Zip  your project's  directory without .gitignore files ",
 	"author": {
 		"name": "Atom Liu",
 		"email": "atomg1024@gmail.com",
 		"url": "https://github.com/G233"
 	},
-	"version": "1.0.0",
-	"publisher": "atonliu",
-	"icon": "https://vscode-1257163508.cos.ap-nanjing.myqcloud.com/index.png",
+	"version": "1.0.1",
+	"publisher": "atomliu",
+	"icon": "logo/index.jpeg",
 	"homepage": "https://github.com/G233/fast-zip-workspace",
+	"repository": "https://github.com/G233/fast-zip-workspace",
 	"preview": true,
 	"engines": {
 		"vscode": "^1.52.0"
