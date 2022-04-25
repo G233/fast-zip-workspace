@@ -5,8 +5,8 @@ const promiseExec = util.promisify(exec)
 
 const getRename = async () => {
   const options = {
-    prompt: '请输入压缩后的文件名: ',
-    placeHolder: '默认为选中文件名',
+    prompt: 'Please enter name of ZIP file what you want: ',
+    placeHolder: 'Default is the selected name',
   }
   const rename = await vscode.window.showInputBox(options)
   return rename
@@ -18,28 +18,28 @@ const zipWorkSpace = async (rename: string | undefined) => {
   const folderList = vscode.workspace.workspaceFolders
 
   if (!folderList) {
-    vscode.window.showErrorMessage('未检测到项目目录，请打开项目文件夹后重试')
+    vscode.window.showErrorMessage('Project directory not detected, please open the project folder and try again')
     return
   }
   // 获取 rootPath
   const folder = folderList[0]
 
   try {
-    vscode.window.showInformationMessage('开始压缩...')
+    vscode.window.showInformationMessage('Starting compressions...')
     await promiseExec(`git archive -o ${rename || folder.name}.zip  HEAD`, {
       cwd: folder.uri.fsPath,
     })
   } catch (err) {
-    vscode.window.showErrorMessage('压缩出错，请检查是否在项目根目录')
+    vscode.window.showErrorMessage('Compression error, please check if it is in the project root')
   }
-  vscode.window.showInformationMessage('压缩好了')
+  vscode.window.showInformationMessage('Compressed')
 }
 
 const activate = (context: vscode.ExtensionContext) => {
   const disposable = vscode.commands.registerCommand(
     'zip-work-space.zipWorkSpace',
     async () => {
-      console.log('插件启动！')
+      console.log('Plug-in launch！')
       const rename = await getRename()
       zipWorkSpace(rename)
     }
